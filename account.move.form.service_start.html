@@ -1,0 +1,8 @@
+<field name="invoice_date" position="after">
+    <label for="l10n_ar_afip_service_start" string="Service period" invisible="l10n_ar_afip_concept not in ('2', '3', '4') or country_code != 'AR'"/>
+    <div invisible="l10n_ar_afip_concept not in ('2', '3', '4') or country_code != 'AR'" class="d-flex align-items-center">
+        <field name="l10n_ar_afip_service_start" class="oe_inline" readonly="state != 'draft'"/>
+        <span class="mx-2">al</span>
+        <field name="l10n_ar_afip_service_end" class="oe_inline" readonly="state != 'draft'"/>
+    </div>
+</field>
