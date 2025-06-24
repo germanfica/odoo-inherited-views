@@ -1,4 +1,33 @@
 <!-- Vista heredada fecha de vencimiento 2 -->
+<!--
+ALERTA SOBRE position="replace"
+===============================
+
+Cuando usamos position="replace", estamos sustituyendo el nodo original
+y todos sus atributos por uno nuevo. Por ello, **NO** debemos quitar
+ninguno de los atributos definidos en la vista principal, ya que:
+
+  1. Otras vistas heredadas pueden depender de esos atributos
+     (por ejemplo: visibilidad, comportamiento de guardado, reglas de lectura).
+  2. Eliminar atributos rompe la coherencia del sistema y provoca errores
+     de validación o fallos en tiempo de ejecución.
+
+En lugar de eliminar, **conserva** siempre todos los atributos originales
+y, si es necesario, añade o modifica únicamente los que realmente quieras cambiar.
+
+Ejemplo de definición original (vista principal):
+
+    <field name="invoice_date_due"
+           force_save="1"
+           placeholder="Date"
+           invisible="invoice_payment_term_id"/>
+
+A continuación, la forma correcta de reemplazar:
+
+  – Se incluye la definición completa con TODOS sus atributos.
+  – Se pueden agregar comentarios o elementos hijos dentro del field
+    para extender su funcionalidad o modificar su comportamiento.
+-->
 <xpath expr="//field[@name='invoice_date_due']" position="replace">
     <field name="invoice_date_due" force_save="1" placeholder="Date" invisible="invoice_payment_term_id" readonly="state != 'draft'" />
-</xpath>
+</xpath>-
